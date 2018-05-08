@@ -44,7 +44,7 @@ Ensure the JMX metrics are being exposed by opening `jconsole` and connecting to
 ![JConsole](https://github.com/lashford/kafka-new-relic-integration/raw/master/jconsole.png "JConsole")
 
 
-#### Kafaka Load
+#### Kafka Load
 
 Lets push some data through Kafka so that we can see some activity in our dashboards.  In two separate terminal windows navigate to the directory where you cloned the repository,  in one of the windows launch the following command,
 
