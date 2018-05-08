@@ -1,0 +1,31 @@
+{
+  "agents" : [
+    {
+      "type": "jmxremote",
+      "instances" : [
+        {
+          "name" : "kafka-local",
+          "host" : "127.0.0.1",
+          "port" : "7203",
+          "metrics" : [
+            {
+              "objectname" : "kafka.server:type=BrokerTopicMetrics,name=MessagesInPerSec",
+              "attributes" : [ "Count", "OneMinuteRate"],
+              "type" : "messages"
+            },
+            {
+              "objectname" : "kafka.server:type=BrokerTopicMetrics,name=BytesRejectedPerSec",
+              "attributes" : [ "Count", "OneMinuteRate" ],
+              "type" : "messages"
+            },
+            {
+              "objectname" : "kafka.server:type=ReplicaManager,name=UnderReplicatedPartitions",
+              "attributes" : [ "Value" ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "plugin_name":"kafka.agent.local"
+}

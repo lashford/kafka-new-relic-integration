@@ -1,0 +1,96 @@
+name: Kafka-broker-1
+version: 1.0
+enabled: true
+jmx:
+  - object_name: kafka.server:type=ReplicaManager,name=*
+    metrics:
+      - attributes: Count, Value
+        type: simple
+  - object_name: kafka.server:type=KafkaServer,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.server:type=BrokerTopicMetrics,name=*
+    metrics:
+      - attributes: Count
+        type: simple
+  - object_name: kafka.server:type=BrokerTopicMetrics,name=*,topic=*
+    metrics:
+      - attributes: Count
+        type: simple
+  - object_name: kafka.server:type=ReplicaFetcherManager,name=*,clientId=Replica
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.server:type=KafkaRequestHandlerPool,name=RequestHandlerAvgIdlePercent
+    metrics:
+      - attributes: Count
+        type: simple
+  - object_name: kafka.server:type=FetcherLagMetrics,name=ConsumerLag,clientId=*,topic=*
+    metrics:
+      - attributes: Count, Value
+        type: simple
+  - object_name: kafka.server:type=DelayedOperationPurgatory,name=*,delayedOperation=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.server:type=SessionExpireListener,name=*
+    metrics:
+      - attributes: Count, Value
+        type: simple
+  - object_name: kafka.server:type=ZooKeeperClientMetrics,name=ZooKeeperRequestLatencyMs
+    metrics:
+      - attributes: Count, Max, Min, Mean, StdDev, 50thPercentile, 75thPercentile, 95thPercentile, 98thPercentile, 99thPercentile, 999thPercentile
+        type: simple
+  - object_name: kafka.cluster:type=Partition,name=*,topic=*,partition=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.controller:type=ControllerChannelManager,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.controller:type=ControllerStats,name=*
+    metrics:
+      - attributes: Value, Count, Max, Min, Mean, StdDev, LatencyUnit, 50thPercentile, 75thPercentile, 95thPercentile, 98thPercentile, 99thPercentile, 999thPercentile, RateUnit, OneMinuteRate
+        type: simple
+  - object_name: kafka.controller:type=KafkaController,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.coordinator.group:type=GroupMetadataManager,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.coordinator.transaction:type=TransactionMarkerChannelManager,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.log:type=Log,name=*,topic=*,partition=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.log:type=LogCleaner,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.log:type=LogCleanerManager,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.log:type=LogManager,name=*,logDirectory=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.log:type=LogManager,name=*
+    metrics:
+      - attributes: Value
+        type: simple
+  - object_name: kafka.network:type=RequestMetrics,name=*,request=*
+    metrics:
+      - attributes: Value, Count, Max, Min, Mean, StdDev, LatencyUnit, 50thPercentile, 75thPercentile, 95thPercentile, 98thPercentile, 99thPercentile, 999thPercentile, RateUnit, OneMinuteRate
+        type: simple
+  - object_name: kafka.network:type=RequestMetrics,name=*
+    metrics:
+      - attributes: Value, Count, Max, Min, Mean, StdDev, LatencyUnit, 50thPercentile, 75thPercentile, 95thPercentile, 98thPercentile, 99thPercentile, 999thPercentile, RateUnit, OneMinuteRate
+        type: simple

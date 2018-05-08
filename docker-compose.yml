@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  kafka:
+    image: ches/kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: HOST_IP
+      ZOOKEEPER_IP: "zookeeper"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      JAVA_RMI_SERVER_HOSTNAME: HOST_IP
+      # Comment out line below to prevent Java agent instrumentation
+      KAFKA_OPTS: "-javaagent:/newrelic/newrelic.jar"
+    ports:
+      - '9092:9092'  # Kafka broker
+      - '7203:7203'  # JMX
+    volumes:
+      - kafka-data:/data
+      - kafka-logs:/logs
+      - ./nr-java-agent:/newrelic
+  zookeeper:
+    image: zookeeper:3.4
+    restart: unless-stopped
+    ports:
+      - '2181:2181'
+
+volumes:
+  kafka-data:
+  kafka-logs:
